@@ -61,7 +61,7 @@ class KitTemplatesTest {
     fun listUsesTitleAndActionStripOnOldHosts() {
         val list = CarList("Stops", rows(2), actions = listOf(CarAction("search", "Search", CarImage("search"))))
         val template = legacy.list(list, headerAction = Action.APP_ICON)
-        assertNull(template.header)
+        // Car App Library 1.7 also derives a Header from the legacy fields, so only the legacy fields are checked.
         assertEquals("Stops", template.title.toString())
         assertEquals(Action.TYPE_APP_ICON, template.headerAction?.type)
         assertEquals(1, template.actionStrip?.actions?.size)
